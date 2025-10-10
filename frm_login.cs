@@ -21,5 +21,10 @@ namespace SistAlmacenamientoProfeJheyson
         {
 
         }
+
+        private void frm_loginLoad(object sender, EventArgs e)
+        {
+            // Código de inicialización al cargar el formulario (si es necesario)
+        }
     }
 }
