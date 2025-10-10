@@ -17,7 +17,7 @@ namespace SistAlmacenamientoProfeJheyson
             InitializeComponent();
         }
 
-        private void frm_login_Load(object sender, EventArgs e)
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
