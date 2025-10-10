@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace SistAlmacenamientoProfeJheyson
 {
-    public partial class frm_login : Form
+    public partial class frm_registrarpaquete : Form
     {
-        public frm_login()
+        public frm_registrarpaquete()
         {
             InitializeComponent();
-        }
-
-        private void frm_login_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

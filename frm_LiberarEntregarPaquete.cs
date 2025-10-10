@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SistAlmacenamientoProfeJheyson
 {
-    public partial class Form1 : Form
+    public partial class frm_LiberarEntregarPaquete : Form
     {
-        public Form1()
+        public frm_LiberarEntregarPaquete()
         {
             InitializeComponent();
         }

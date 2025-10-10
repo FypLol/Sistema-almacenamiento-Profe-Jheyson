@@ -46,17 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmPanelUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmPanelUsuario.Designer.cs">
+      <DependentUpon>frmPanelUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_LiberarEntregarPaquete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_LiberarEntregarPaquete.Designer.cs">
+      <DependentUpon>frm_LiberarEntregarPaquete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_panelAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_panelAdmin.Designer.cs">
+      <DependentUpon>frm_panelAdmin.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_login.Designer.cs">
       <DependentUpon>frm_login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_registrarpaquete.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_registrarpaquete.Designer.cs">
+      <DependentUpon>frm_registrarpaquete.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
