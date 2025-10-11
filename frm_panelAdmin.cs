@@ -16,5 +16,11 @@ namespace SistAlmacenamientoProfeJheyson
         {
             InitializeComponent();
         }
+
+        private void btn_VRegistrar_Click(object sender, EventArgs e)
+        {
+            frm_registrarpaquete frm = new frm_registrarpaquete();
+            frm.ShowDialog();
+        }
     }
 }
