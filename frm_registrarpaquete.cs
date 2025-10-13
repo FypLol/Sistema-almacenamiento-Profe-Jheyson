@@ -163,6 +163,10 @@ namespace SistAlmacenamientoProfeJheyson
             }
         }
 
+        private void tboxNombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }      
