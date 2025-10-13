@@ -56,57 +56,72 @@
             // lbl_nombreDestinatario
             // 
             this.lbl_nombreDestinatario.AutoSize = true;
-            this.lbl_nombreDestinatario.Location = new System.Drawing.Point(162, 69);
+            this.lbl_nombreDestinatario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nombreDestinatario.Location = new System.Drawing.Point(143, 69);
             this.lbl_nombreDestinatario.Name = "lbl_nombreDestinatario";
-            this.lbl_nombreDestinatario.Size = new System.Drawing.Size(103, 13);
+            this.lbl_nombreDestinatario.Size = new System.Drawing.Size(150, 16);
             this.lbl_nombreDestinatario.TabIndex = 0;
             this.lbl_nombreDestinatario.Text = "Nombre Destinatario";
             // 
             // lbl_Numero
             // 
             this.lbl_Numero.AutoSize = true;
-            this.lbl_Numero.Location = new System.Drawing.Point(663, 76);
+            this.lbl_Numero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_Numero.Location = new System.Drawing.Point(646, 74);
             this.lbl_Numero.Name = "lbl_Numero";
-            this.lbl_Numero.Size = new System.Drawing.Size(85, 13);
+            this.lbl_Numero.Size = new System.Drawing.Size(114, 15);
             this.lbl_Numero.TabIndex = 1;
             this.lbl_Numero.Text = "Numero telefono";
             // 
             // lbl_tamañoP
             // 
             this.lbl_tamañoP.AutoSize = true;
-            this.lbl_tamañoP.Location = new System.Drawing.Point(172, 133);
+            this.lbl_tamañoP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_tamañoP.Location = new System.Drawing.Point(143, 133);
             this.lbl_tamañoP.Name = "lbl_tamañoP";
-            this.lbl_tamañoP.Size = new System.Drawing.Size(103, 13);
+            this.lbl_tamañoP.Size = new System.Drawing.Size(135, 15);
             this.lbl_tamañoP.TabIndex = 2;
             this.lbl_tamañoP.Text = "Tamaño de paquete";
             // 
             // lbl_codigoLiberar
             // 
             this.lbl_codigoLiberar.AutoSize = true;
-            this.lbl_codigoLiberar.Location = new System.Drawing.Point(185, 204);
+            this.lbl_codigoLiberar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_codigoLiberar.Location = new System.Drawing.Point(156, 202);
             this.lbl_codigoLiberar.Name = "lbl_codigoLiberar";
-            this.lbl_codigoLiberar.Size = new System.Drawing.Size(80, 13);
+            this.lbl_codigoLiberar.Size = new System.Drawing.Size(110, 15);
             this.lbl_codigoLiberar.TabIndex = 3;
             this.lbl_codigoLiberar.Text = "Código a liberar";
             // 
             // btnRegistrarP
             // 
+            this.btnRegistrarP.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnRegistrarP.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnRegistrarP.FlatAppearance.BorderSize = 0;
+            this.btnRegistrarP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegistrarP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarP.ForeColor = System.Drawing.Color.Black;
             this.btnRegistrarP.Location = new System.Drawing.Point(588, 188);
+            this.btnRegistrarP.Margin = new System.Windows.Forms.Padding(0);
             this.btnRegistrarP.Name = "btnRegistrarP";
             this.btnRegistrarP.Size = new System.Drawing.Size(243, 45);
             this.btnRegistrarP.TabIndex = 4;
             this.btnRegistrarP.Text = "Registrar Paquetes";
-            this.btnRegistrarP.UseVisualStyleBackColor = true;
+            this.btnRegistrarP.UseVisualStyleBackColor = false;
             this.btnRegistrarP.Click += new System.EventHandler(this.btnRegistrarP_Click);
             // 
             // btn_Liberar
             // 
+            this.btn_Liberar.BackColor = System.Drawing.Color.LightCoral;
+            this.btn_Liberar.FlatAppearance.BorderSize = 0;
+            this.btn_Liberar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Liberar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Liberar.Location = new System.Drawing.Point(837, 188);
             this.btn_Liberar.Name = "btn_Liberar";
             this.btn_Liberar.Size = new System.Drawing.Size(243, 45);
             this.btn_Liberar.TabIndex = 5;
             this.btn_Liberar.Text = "Liberar espacio";
-            this.btn_Liberar.UseVisualStyleBackColor = true;
+            this.btn_Liberar.UseVisualStyleBackColor = false;
             this.btn_Liberar.Click += new System.EventHandler(this.btn_Liberar_Click);
             // 
             // dgvRegistrarPaquetes
@@ -154,7 +169,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(118, 60);
+            this.pictureBox1.Location = new System.Drawing.Point(87, 60);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(36, 29);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -164,7 +179,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(118, 115);
+            this.pictureBox2.Location = new System.Drawing.Point(87, 109);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(36, 42);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -174,7 +189,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(627, 69);
+            this.pictureBox3.Location = new System.Drawing.Point(600, 69);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(30, 30);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -183,7 +198,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(766, 126);
+            this.textBox1.Location = new System.Drawing.Point(766, 130);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(243, 20);
             this.textBox1.TabIndex = 15;
@@ -191,16 +206,17 @@
             // lbl_dni
             // 
             this.lbl_dni.AutoSize = true;
+            this.lbl_dni.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_dni.Location = new System.Drawing.Point(688, 133);
             this.lbl_dni.Name = "lbl_dni";
-            this.lbl_dni.Size = new System.Drawing.Size(26, 13);
+            this.lbl_dni.Size = new System.Drawing.Size(31, 15);
             this.lbl_dni.TabIndex = 16;
             this.lbl_dni.Text = "DNI";
             // 
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(617, 126);
+            this.pictureBox4.Location = new System.Drawing.Point(600, 126);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(50, 25);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -250,7 +266,6 @@
         private System.Windows.Forms.Label lbl_Numero;
         private System.Windows.Forms.Label lbl_tamañoP;
         private System.Windows.Forms.Label lbl_codigoLiberar;
-        private System.Windows.Forms.Button btnRegistrarP;
         private System.Windows.Forms.Button btn_Liberar;
         private System.Windows.Forms.DataGridView dgvRegistrarPaquetes;
         private System.Windows.Forms.TextBox tboxNombre;
@@ -263,5 +278,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label lbl_dni;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Button btnRegistrarP;
     }
 }
