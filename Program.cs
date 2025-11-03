@@ -16,7 +16,7 @@ namespace SistAlmacenamientoProfeJheyson
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_panelAdmin());
+            Application.Run(new frm_login());
         }
     }
 }

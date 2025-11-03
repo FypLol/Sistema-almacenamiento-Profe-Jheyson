@@ -49,6 +49,7 @@
             this.Controls.Add(this.btn_VRegistrar);
             this.Name = "frm_panelAdmin";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frm_panelAdmin_Load);
             this.ResumeLayout(false);
 
         }

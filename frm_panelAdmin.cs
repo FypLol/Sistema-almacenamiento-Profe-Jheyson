@@ -22,5 +22,10 @@ namespace SistAlmacenamientoProfeJheyson
             frm_registrarpaquete frm = new frm_registrarpaquete();
             frm.ShowDialog();
         }
+
+        private void frm_panelAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
