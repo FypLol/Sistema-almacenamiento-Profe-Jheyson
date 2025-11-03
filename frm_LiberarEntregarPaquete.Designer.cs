@@ -49,6 +49,7 @@
             this.BtnRegistrar.TabIndex = 0;
             this.BtnRegistrar.Text = "Entregado / Liberar Espacio";
             this.BtnRegistrar.UseVisualStyleBackColor = false;
+            this.BtnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
             // 
             // btn_DNI
             // 

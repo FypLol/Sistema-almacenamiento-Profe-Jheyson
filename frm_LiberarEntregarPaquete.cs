@@ -46,5 +46,10 @@ namespace SistAlmacenamientoProfeJheyson
         {
 
         }
+
+        private void BtnRegistrar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
