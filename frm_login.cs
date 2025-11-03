@@ -15,6 +15,7 @@ namespace SistAlmacenamientoProfeJheyson
         public frm_login()
         {
             InitializeComponent();
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -25,6 +26,11 @@ namespace SistAlmacenamientoProfeJheyson
         private void frm_loginLoad(object sender, EventArgs e)
         {
             // Código de inicialización al cargar el formulario (si es necesario)
+        }
+
+        private void btn_iniciarsesion_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

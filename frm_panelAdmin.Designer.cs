@@ -69,7 +69,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(299, 36);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Liberar Espacios";
+            this.button1.Text = "Entregar Paque/Liberar Espacios";
             this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
@@ -97,7 +97,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(291, 36);
             this.button3.TabIndex = 3;
-            this.button3.Text = "Ver Espacios";
+            this.button3.Text = "Historial de Paquetes";
             this.button3.UseVisualStyleBackColor = false;
             // 
             // pictureBox1

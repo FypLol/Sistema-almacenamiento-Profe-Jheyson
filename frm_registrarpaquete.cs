@@ -58,7 +58,8 @@ namespace SistAlmacenamientoProfeJheyson
         }
 
         private void btnRegistrarP_Click(object sender, EventArgs e)
-        {
+        { 
+            //Borrar todo 
             string nombre = tboxNombre.Text.Trim();
             string telefono = tboxTelefono.Text.Trim();
             string tamaño = cmbTamaño.SelectedItem?.ToString();

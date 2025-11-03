@@ -32,14 +32,11 @@
             this.lbl_nombreDestinatario = new System.Windows.Forms.Label();
             this.lbl_Numero = new System.Windows.Forms.Label();
             this.lbl_tamañoP = new System.Windows.Forms.Label();
-            this.lbl_codigoLiberar = new System.Windows.Forms.Label();
             this.btnRegistrarP = new System.Windows.Forms.Button();
-            this.btn_Liberar = new System.Windows.Forms.Button();
             this.dgvRegistrarPaquetes = new System.Windows.Forms.DataGridView();
             this.tboxNombre = new System.Windows.Forms.TextBox();
             this.tboxTelefono = new System.Windows.Forms.TextBox();
             this.cmbTamaño = new System.Windows.Forms.ComboBox();
-            this.tboxCodigoLiberar = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -83,16 +80,6 @@
             this.lbl_tamañoP.TabIndex = 2;
             this.lbl_tamañoP.Text = "Tamaño de paquete";
             // 
-            // lbl_codigoLiberar
-            // 
-            this.lbl_codigoLiberar.AutoSize = true;
-            this.lbl_codigoLiberar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_codigoLiberar.Location = new System.Drawing.Point(156, 202);
-            this.lbl_codigoLiberar.Name = "lbl_codigoLiberar";
-            this.lbl_codigoLiberar.Size = new System.Drawing.Size(110, 15);
-            this.lbl_codigoLiberar.TabIndex = 3;
-            this.lbl_codigoLiberar.Text = "Código a liberar";
-            // 
             // btnRegistrarP
             // 
             this.btnRegistrarP.BackColor = System.Drawing.Color.GreenYellow;
@@ -101,7 +88,7 @@
             this.btnRegistrarP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistrarP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarP.ForeColor = System.Drawing.Color.Black;
-            this.btnRegistrarP.Location = new System.Drawing.Point(588, 188);
+            this.btnRegistrarP.Location = new System.Drawing.Point(766, 186);
             this.btnRegistrarP.Margin = new System.Windows.Forms.Padding(0);
             this.btnRegistrarP.Name = "btnRegistrarP";
             this.btnRegistrarP.Size = new System.Drawing.Size(243, 45);
@@ -110,26 +97,12 @@
             this.btnRegistrarP.UseVisualStyleBackColor = false;
             this.btnRegistrarP.Click += new System.EventHandler(this.btnRegistrarP_Click);
             // 
-            // btn_Liberar
-            // 
-            this.btn_Liberar.BackColor = System.Drawing.Color.LightCoral;
-            this.btn_Liberar.FlatAppearance.BorderSize = 0;
-            this.btn_Liberar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Liberar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Liberar.Location = new System.Drawing.Point(837, 188);
-            this.btn_Liberar.Name = "btn_Liberar";
-            this.btn_Liberar.Size = new System.Drawing.Size(243, 45);
-            this.btn_Liberar.TabIndex = 5;
-            this.btn_Liberar.Text = "Liberar espacio";
-            this.btn_Liberar.UseVisualStyleBackColor = false;
-            this.btn_Liberar.Click += new System.EventHandler(this.btn_Liberar_Click);
-            // 
             // dgvRegistrarPaquetes
             // 
             this.dgvRegistrarPaquetes.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.dgvRegistrarPaquetes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRegistrarPaquetes.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvRegistrarPaquetes.Location = new System.Drawing.Point(54, 271);
+            this.dgvRegistrarPaquetes.Location = new System.Drawing.Point(40, 253);
             this.dgvRegistrarPaquetes.Name = "dgvRegistrarPaquetes";
             this.dgvRegistrarPaquetes.RowHeadersWidth = 51;
             this.dgvRegistrarPaquetes.Size = new System.Drawing.Size(1040, 285);
@@ -160,13 +133,6 @@
             this.cmbTamaño.Name = "cmbTamaño";
             this.cmbTamaño.Size = new System.Drawing.Size(250, 21);
             this.cmbTamaño.TabIndex = 10;
-            // 
-            // tboxCodigoLiberar
-            // 
-            this.tboxCodigoLiberar.Location = new System.Drawing.Point(299, 201);
-            this.tboxCodigoLiberar.Name = "tboxCodigoLiberar";
-            this.tboxCodigoLiberar.Size = new System.Drawing.Size(250, 20);
-            this.tboxCodigoLiberar.TabIndex = 11;
             // 
             // pictureBox1
             // 
@@ -237,14 +203,11 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.tboxCodigoLiberar);
             this.Controls.Add(this.cmbTamaño);
             this.Controls.Add(this.tboxTelefono);
             this.Controls.Add(this.tboxNombre);
             this.Controls.Add(this.dgvRegistrarPaquetes);
-            this.Controls.Add(this.btn_Liberar);
             this.Controls.Add(this.btnRegistrarP);
-            this.Controls.Add(this.lbl_codigoLiberar);
             this.Controls.Add(this.lbl_tamañoP);
             this.Controls.Add(this.lbl_Numero);
             this.Controls.Add(this.lbl_nombreDestinatario);
@@ -267,13 +230,10 @@
         private System.Windows.Forms.Label lbl_nombreDestinatario;
         private System.Windows.Forms.Label lbl_Numero;
         private System.Windows.Forms.Label lbl_tamañoP;
-        private System.Windows.Forms.Label lbl_codigoLiberar;
-        private System.Windows.Forms.Button btn_Liberar;
         private System.Windows.Forms.DataGridView dgvRegistrarPaquetes;
         private System.Windows.Forms.TextBox tboxNombre;
         private System.Windows.Forms.TextBox tboxTelefono;
         private System.Windows.Forms.ComboBox cmbTamaño;
-        private System.Windows.Forms.TextBox tboxCodigoLiberar;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
