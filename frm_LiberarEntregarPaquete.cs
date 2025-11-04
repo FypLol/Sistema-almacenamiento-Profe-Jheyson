@@ -51,5 +51,10 @@ namespace SistAlmacenamientoProfeJheyson
         {
 
         }
+
+        private void frm_LiberarEntregarPaquete_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

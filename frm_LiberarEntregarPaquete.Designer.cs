@@ -128,6 +128,7 @@
             this.Name = "frm_LiberarEntregarPaquete";
             this.Text = "frm_LiberarEntregarPaquete";
             this.TransparencyKey = System.Drawing.Color.Gray;
+            this.Load += new System.EventHandler(this.frm_LiberarEntregarPaquete_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
