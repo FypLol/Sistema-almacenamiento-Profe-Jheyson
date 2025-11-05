@@ -2,15 +2,15 @@
 {
     partial class frm_LiberarEntregarPaquete
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.DataGridView dgvPaquetes;
+        private System.Windows.Forms.Label lblMsgVacio;
+        private System.Windows.Forms.TextBox txtBuscar;
+        private System.Windows.Forms.Button BtnBuscar;
+        private System.Windows.Forms.Button BtnVerTodos;
+        private System.Windows.Forms.Button BtnRegistrar;
+        private System.Windows.Forms.Button BtnCerrar;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,130 +20,106 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_LiberarEntregarPaquete));
+            this.dgvPaquetes = new System.Windows.Forms.DataGridView();
+            this.lblMsgVacio = new System.Windows.Forms.Label();
+            this.txtBuscar = new System.Windows.Forms.TextBox();
+            this.BtnBuscar = new System.Windows.Forms.Button();
+            this.BtnVerTodos = new System.Windows.Forms.Button();
             this.BtnRegistrar = new System.Windows.Forms.Button();
-            this.btn_DNI = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Btn_buscar = new System.Windows.Forms.Button();
-            this.Btn_VerTodos = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.BtnCerrar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).BeginInit();
             this.SuspendLayout();
+            // 
+            // dgvPaquetes
+            // 
+            this.dgvPaquetes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPaquetes.Location = new System.Drawing.Point(12, 70);
+            this.dgvPaquetes.Name = "dgvPaquetes";
+            this.dgvPaquetes.Size = new System.Drawing.Size(600, 250);
+            this.dgvPaquetes.TabIndex = 0;
+            // 
+            // lblMsgVacio
+            // 
+            this.lblMsgVacio.AutoSize = true;
+            this.lblMsgVacio.ForeColor = System.Drawing.Color.Gray;
+            this.lblMsgVacio.Location = new System.Drawing.Point(210, 140);
+            this.lblMsgVacio.Name = "lblMsgVacio";
+            this.lblMsgVacio.Size = new System.Drawing.Size(184, 15);
+            this.lblMsgVacio.TabIndex = 1;
+            this.lblMsgVacio.Text = "No hay paquetes registrados aún.";
+            this.lblMsgVacio.Visible = false;
+            // 
+            // txtBuscar
+            // 
+            this.txtBuscar.Location = new System.Drawing.Point(12, 25);
+            this.txtBuscar.Name = "txtBuscar";
+            this.txtBuscar.Size = new System.Drawing.Size(200, 23);
+            this.txtBuscar.TabIndex = 2;
+            // 
+            // BtnBuscar
+            // 
+            this.BtnBuscar.Location = new System.Drawing.Point(220, 24);
+            this.BtnBuscar.Name = "BtnBuscar";
+            this.BtnBuscar.Size = new System.Drawing.Size(75, 25);
+            this.BtnBuscar.TabIndex = 3;
+            this.BtnBuscar.Text = "Buscar";
+            this.BtnBuscar.UseVisualStyleBackColor = true;
+            this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
+            // 
+            // BtnVerTodos
+            // 
+            this.BtnVerTodos.Location = new System.Drawing.Point(305, 24);
+            this.BtnVerTodos.Name = "BtnVerTodos";
+            this.BtnVerTodos.Size = new System.Drawing.Size(90, 25);
+            this.BtnVerTodos.TabIndex = 4;
+            this.BtnVerTodos.Text = "Ver todos";
+            this.BtnVerTodos.UseVisualStyleBackColor = true;
+            this.BtnVerTodos.Click += new System.EventHandler(this.BtnVerTodos_Click);
             // 
             // BtnRegistrar
             // 
-            this.BtnRegistrar.BackColor = System.Drawing.Color.LimeGreen;
-            this.BtnRegistrar.Location = new System.Drawing.Point(272, 382);
+            this.BtnRegistrar.BackColor = System.Drawing.Color.LightGreen;
+            this.BtnRegistrar.Location = new System.Drawing.Point(405, 24);
             this.BtnRegistrar.Name = "BtnRegistrar";
-            this.BtnRegistrar.Size = new System.Drawing.Size(275, 45);
-            this.BtnRegistrar.TabIndex = 0;
-            this.BtnRegistrar.Text = "Entregado / Liberar Espacio";
+            this.BtnRegistrar.Size = new System.Drawing.Size(100, 25);
+            this.BtnRegistrar.TabIndex = 5;
+            this.BtnRegistrar.Text = "Entregar";
             this.BtnRegistrar.UseVisualStyleBackColor = false;
             this.BtnRegistrar.Click += new System.EventHandler(this.BtnRegistrar_Click);
             // 
-            // btn_DNI
+            // BtnCerrar
             // 
-            this.btn_DNI.AutoSize = true;
-            this.btn_DNI.Font = new System.Drawing.Font("Modern No. 20", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_DNI.Location = new System.Drawing.Point(222, 33);
-            this.btn_DNI.Name = "btn_DNI";
-            this.btn_DNI.Size = new System.Drawing.Size(38, 17);
-            this.btn_DNI.TabIndex = 2;
-            this.btn_DNI.Text = "DNI";
-            this.btn_DNI.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btn_DNI.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 91);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(733, 274);
-            this.dataGridView1.TabIndex = 3;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(281, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(168, 20);
-            this.textBox1.TabIndex = 4;
-            // 
-            // Btn_buscar
-            // 
-            this.Btn_buscar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.Btn_buscar.Location = new System.Drawing.Point(525, 32);
-            this.Btn_buscar.Name = "Btn_buscar";
-            this.Btn_buscar.Size = new System.Drawing.Size(91, 23);
-            this.Btn_buscar.TabIndex = 6;
-            this.Btn_buscar.Text = "Buscar";
-            this.Btn_buscar.UseVisualStyleBackColor = false;
-            this.Btn_buscar.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // Btn_VerTodos
-            // 
-            this.Btn_VerTodos.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.Btn_VerTodos.Location = new System.Drawing.Point(656, 32);
-            this.Btn_VerTodos.Name = "Btn_VerTodos";
-            this.Btn_VerTodos.Size = new System.Drawing.Size(90, 23);
-            this.Btn_VerTodos.TabIndex = 7;
-            this.Btn_VerTodos.Text = "Ver todos";
-            this.Btn_VerTodos.UseVisualStyleBackColor = false;
-            this.Btn_VerTodos.Click += new System.EventHandler(this.Btn_VerTodos_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(137, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(64, 44);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.BtnCerrar.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.BtnCerrar.Location = new System.Drawing.Point(515, 24);
+            this.BtnCerrar.Name = "BtnCerrar";
+            this.BtnCerrar.Size = new System.Drawing.Size(75, 25);
+            this.BtnCerrar.TabIndex = 6;
+            this.BtnCerrar.Text = "Cerrar";
+            this.BtnCerrar.UseVisualStyleBackColor = false;
+            this.BtnCerrar.Click += new System.EventHandler(this.BtnCerrar_Click);
             // 
             // frm_LiberarEntregarPaquete
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Info;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.Btn_VerTodos);
-            this.Controls.Add(this.Btn_buscar);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.btn_DNI);
+            this.ClientSize = new System.Drawing.Size(624, 341);
+            this.Controls.Add(this.BtnCerrar);
             this.Controls.Add(this.BtnRegistrar);
-            this.ForeColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.BtnVerTodos);
+            this.Controls.Add(this.BtnBuscar);
+            this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.lblMsgVacio);
+            this.Controls.Add(this.dgvPaquetes);
             this.Name = "frm_LiberarEntregarPaquete";
-            this.Text = "frm_LiberarEntregarPaquete";
-            this.TransparencyKey = System.Drawing.Color.Gray;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Liberar / Entregar Paquetes";
             this.Load += new System.EventHandler(this.frm_LiberarEntregarPaquete_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPaquetes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
-
-        #endregion
-
-        private System.Windows.Forms.Button BtnRegistrar;
-        private System.Windows.Forms.Label btn_DNI;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button Btn_buscar;
-        private System.Windows.Forms.Button Btn_VerTodos;
-        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
