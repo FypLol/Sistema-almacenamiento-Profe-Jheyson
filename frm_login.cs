@@ -29,42 +29,66 @@ namespace SistAlmacenamientoProfeJheyson
         {
             string rutaDB = "usuarios.db";
 
-            if (!File.Exists(rutaDB))
+            try
             {
-                SQLiteConnection.CreateFile(rutaDB);
-            }
+                // Si no existe el archivo, lo crea desde cero
+                if (!File.Exists(rutaDB))
+                {
+                    SQLiteConnection.CreateFile(rutaDB);
+                }
 
-            using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + rutaDB + ";Version=3;"))
-            {
-                conn.Open();
+                using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + rutaDB + ";Version=3;"))
+                {
+                    conn.Open();
 
-                // Crear tabla si no existe
-                string sql = @"CREATE TABLE IF NOT EXISTS usuarios (
+                    string sql = @"CREATE TABLE IF NOT EXISTS usuarios (
                                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                                 usuario TEXT NOT NULL,
                                 contrasena TEXT NOT NULL
-                            );";
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
-                {
-                    cmd.ExecuteNonQuery();
-                }
-
-                // Insertar usuario admin si no existe
-                sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = 'admin';";
-                using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
-                {
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-                    if (count == 0)
+                           );";
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
                     {
-                        sql = "INSERT INTO usuarios (usuario, contrasena) VALUES ('admin', '1234');";
-                        using (SQLiteCommand insertCmd = new SQLiteCommand(sql, conn))
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    // Crear usuario admin si no existe
+                    sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = 'admin';";
+                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
+                    {
+                        int count = Convert.ToInt32(cmd.ExecuteScalar());
+                        if (count == 0)
                         {
-                            insertCmd.ExecuteNonQuery();
+                            sql = "INSERT INTO usuarios (usuario, contrasena) VALUES ('admin', '1234');";
+                            using (SQLiteCommand insertCmd = new SQLiteCommand(sql, conn))
+                            {
+                                insertCmd.ExecuteNonQuery();
+                            }
                         }
                     }
                 }
             }
+            catch (SQLiteException ex)
+            {
+                // 🔧 Si el archivo está corrupto, se elimina y se vuelve a crear
+                if (ex.Message.Contains("file is not a database"))
+                {
+                    MessageBox.Show("⚠️ El archivo 'usuarios.db' estaba dañado. Se regenerará automáticamente.",
+                                    "Reparación de Base de Datos",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+
+                    File.Delete(rutaDB); // borra el archivo dañado
+                    SQLiteConnection.CreateFile(rutaDB); // crea uno nuevo limpio
+                    CrearTablaUsuariosSiNoExiste(); // vuelve a generar estructura y admin
+                }
+                else
+                {
+                    MessageBox.Show("Error de base de datos:\n" + ex.Message,
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
+
 
         // Botón de inicio de sesión
         private void btn_iniciarsesion_Click(object sender, EventArgs e)
