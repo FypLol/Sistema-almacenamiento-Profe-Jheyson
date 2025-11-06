@@ -40,7 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tboxDNI = new System.Windows.Forms.TextBox();
             this.lbl_dni = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistrarPaquetes)).BeginInit();
@@ -174,13 +174,13 @@
             this.pictureBox3.TabIndex = 14;
             this.pictureBox3.TabStop = false;
             // 
-            // textBox1
+            // tboxDNI
             // 
-            this.textBox1.Location = new System.Drawing.Point(993, 196);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(271, 26);
-            this.textBox1.TabIndex = 15;
+            this.tboxDNI.Location = new System.Drawing.Point(993, 196);
+            this.tboxDNI.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.tboxDNI.Name = "tboxDNI";
+            this.tboxDNI.Size = new System.Drawing.Size(271, 26);
+            this.tboxDNI.TabIndex = 15;
             // 
             // lbl_dni
             // 
@@ -212,7 +212,7 @@
             this.ClientSize = new System.Drawing.Size(1379, 640);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.lbl_dni);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tboxDNI);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -251,7 +251,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tboxDNI;
         private System.Windows.Forms.Label lbl_dni;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnRegistrarP;

@@ -1,7 +1,0 @@
-CREATE TABLE IF NOT EXISTS usuarios (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    usuario TEXT NOT NULL,
-    contrasena TEXT NOT NULL
-);
-
-INSERT INTO usuarios (usuario, contrasena) VALUES ('admin', '1234');

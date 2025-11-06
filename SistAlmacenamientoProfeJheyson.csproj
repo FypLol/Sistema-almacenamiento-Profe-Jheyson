@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BDHelper.cs" />
     <Compile Include="Estructuras.cs" />
     <Compile Include="frmPanelUsuario.cs">
       <SubType>Form</SubType>
@@ -147,7 +148,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="usuarios.db" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

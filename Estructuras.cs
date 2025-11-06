@@ -1,38 +1,48 @@
 ﻿using System;
+using System.Data.SQLite;
 using System.Windows.Forms;
 
 namespace SistAlmacenamientoProfeJheyson
 {
-    //  Clase Nodo
+    // 🔹 Clase Nodo
     public class Nodo
     {
-        public string NombreDestinatario;
-        public string Telefono;
-        public string Tamaño;
-        public string DNI;
-        public Nodo Siguiente;
+        public string NombreDestinatario { get; set; }
+        public string Telefono { get; set; }
+        public string Tamaño { get; set; }
+        public string DNI { get; set; }
+        public string FechaIngreso { get; set; }
+        public Nodo Siguiente { get; set; }
     }
 
-    //  Clase Cola Registro y Entrega
+    // 🔹 Clase Cola de Paquetes (para los pendientes)
     public class ColaPaquetes
     {
-        private Nodo inicio;
+        private Nodo frente;
         private Nodo fin;
 
-        // Encolar
-        public void Encolar(string nombre, string telefono, string tamaño, string dni)
+        public ColaPaquetes()
         {
-            Nodo nuevo = new Nodo();
-            nuevo.NombreDestinatario = nombre;
-            nuevo.Telefono = telefono;
-            nuevo.Tamaño = tamaño;
-            nuevo.DNI = dni;
+            frente = null;
+            fin = null;
+            CargarPendientesDesdeBD(); // Carga paquetes pendientes desde la BD
+        }
 
-            if (inicio == null)
+        // Solo encola en memoria (para reconstrucción)
+        private void EncolarSoloMemoria(string nombre, string telefono, string tamaño, string dni, string fecha)
+        {
+            Nodo nuevo = new Nodo
             {
-                inicio = nuevo;
-                fin = nuevo;
-            }
+                NombreDestinatario = nombre,
+                Telefono = telefono,
+                Tamaño = tamaño,
+                DNI = dni,
+                FechaIngreso = fecha,
+                Siguiente = null
+            };
+
+            if (frente == null)
+                frente = fin = nuevo;
             else
             {
                 fin.Siguiente = nuevo;
@@ -40,36 +50,158 @@ namespace SistAlmacenamientoProfeJheyson
             }
         }
 
-        // Desencolar
-        public Nodo Desencolar()
+        // Encola y guarda en BD
+        public void Encolar(string nombre, string telefono, string tamaño, string dni, string fecha)
         {
-            if (inicio == null)
-                return null;
+            // 1️⃣ Encola en memoria
+            EncolarSoloMemoria(nombre, telefono, tamaño, dni, fecha);
 
-            Nodo temp = inicio;
-            inicio = inicio.Siguiente;
-            return temp;
-        }
-
-        // Mostrar contenido para DataGridView
-        public void MostrarEnGrid(DataGridView dgv)
-        {
-            dgv.Rows.Clear();
-            Nodo actual = inicio;
-            while (actual != null)
+            // 2️⃣ Guarda en BD
+            try
             {
-                dgv.Rows.Add(actual.NombreDestinatario, actual.Telefono, actual.Tamaño, actual.DNI);
-                actual = actual.Siguiente;
+                using (var cn = new SQLiteConnection(BDHelper.CadenaConexion))
+                {
+                    cn.Open();
+                    string sql = @"INSERT INTO paquetes (nombre, telefono, tamano, fecha_ingreso, estado)
+                                   VALUES (@n, @t, @tam, @f, 'Pendiente');";
+                    using (var cmd = new SQLiteCommand(sql, cn))
+                    {
+                        cmd.Parameters.AddWithValue("@n", nombre);
+                        cmd.Parameters.AddWithValue("@t", telefono);
+                        cmd.Parameters.AddWithValue("@tam", tamaño + " - DNI:" + dni);
+                        cmd.Parameters.AddWithValue("@f", fecha);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("⚠️ Error al guardar paquete en BD:\n" + ex.Message);
             }
         }
 
-        public bool EstaVacia()
+        // Desencola (entregar paquete)
+        public Nodo Desencolar()
         {
-            return inicio == null;
+            if (frente == null)
+                return null;
+
+            Nodo tmp = frente;
+            frente = frente.Siguiente;
+            if (frente == null)
+                fin = null;
+
+            // 2️⃣ Actualiza en BD a “Entregado”
+            try
+            {
+                using (var cn = new SQLiteConnection(BDHelper.CadenaConexion))
+                {
+                    cn.Open();
+                    string sql = @"UPDATE paquetes 
+                                   SET estado='Entregado' 
+                                   WHERE nombre=@n AND telefono=@t AND fecha_ingreso=@f AND estado='Pendiente';";
+                    using (var cmd = new SQLiteCommand(sql, cn))
+                    {
+                        cmd.Parameters.AddWithValue("@n", tmp.NombreDestinatario);
+                        cmd.Parameters.AddWithValue("@t", tmp.Telefono);
+                        cmd.Parameters.AddWithValue("@f", tmp.FechaIngreso);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("⚠️ Error al actualizar estado en BD:\n" + ex.Message);
+            }
+
+            return tmp;
         }
+
+        // Mostrar todos los paquetes en DataGridView
+        public void MostrarEnGrid(DataGridView dgv)
+        {
+            dgv.Rows.Clear();
+            dgv.Columns.Clear();
+
+            dgv.Columns.Add("colNombre", "Nombre");
+            dgv.Columns.Add("colTelefono", "Teléfono");
+            dgv.Columns.Add("colTamano", "Tamaño");
+            dgv.Columns.Add("colFecha", "Fecha Ingreso");
+            dgv.Columns.Add("colEstado", "Estado");
+
+            try
+            {
+                using (var cn = new SQLiteConnection(BDHelper.CadenaConexion))
+                {
+                    cn.Open();
+                    string sql = @"SELECT nombre, telefono, tamano, fecha_ingreso, estado
+                                   FROM paquetes
+                                   ORDER BY id ASC;";
+                    using (var cmd = new SQLiteCommand(sql, cn))
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        while (rd.Read())
+                        {
+                            dgv.Rows.Add(
+                                rd["nombre"].ToString(),
+                                rd["telefono"].ToString(),
+                                rd["tamano"].ToString(),
+                                rd["fecha_ingreso"].ToString(),
+                                rd["estado"].ToString()
+                            );
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("⚠️ Error al leer paquetes desde BD:\n" + ex.Message);
+            }
+        }
+
+        // Carga solo los paquetes pendientes para reconstruir la cola
+        private void CargarPendientesDesdeBD()
+        {
+            try
+            {
+                using (var cn = new SQLiteConnection(BDHelper.CadenaConexion))
+                {
+                    cn.Open();
+                    string sql = @"SELECT nombre, telefono, tamano, fecha_ingreso 
+                                   FROM paquetes 
+                                   WHERE estado='Pendiente' 
+                                   ORDER BY id ASC;";
+                    using (var cmd = new SQLiteCommand(sql, cn))
+                    using (var rd = cmd.ExecuteReader())
+                    {
+                        while (rd.Read())
+                        {
+                            string tamCompleto = rd["tamano"].ToString();
+                            string[] partes = tamCompleto.Split(new string[] { " - DNI:" }, StringSplitOptions.None);
+                            string tamano = partes[0];
+                            string dni = (partes.Length > 1) ? partes[1] : "N/A";
+
+                            EncolarSoloMemoria(
+                                rd["nombre"].ToString(),
+                                rd["telefono"].ToString(),
+                                tamano,
+                                dni,
+                                rd["fecha_ingreso"].ToString()
+                            );
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("⚠️ Error al reconstruir cola desde BD:\n" + ex.Message);
+            }
+        }
+
+        public bool EstaVacia() => frente == null;
     }
 
-    //  Clase Pila (Historial de entregas)
+    // 🔹 Clase Pila de Historial de Paquetes Entregados
     public class PilaHistorial
     {
         private Nodo tope;
@@ -85,14 +217,21 @@ namespace SistAlmacenamientoProfeJheyson
             if (tope == null)
                 return null;
 
-            Nodo temp = tope;
+            Nodo tmp = tope;
             tope = tope.Siguiente;
-            return temp;
+            return tmp;
         }
 
         public void MostrarEnGrid(DataGridView dgv)
         {
             dgv.Rows.Clear();
+            dgv.Columns.Clear();
+
+            dgv.Columns.Add("colNombre", "Nombre");
+            dgv.Columns.Add("colTelefono", "Teléfono");
+            dgv.Columns.Add("colTamano", "Tamaño");
+            dgv.Columns.Add("colDNI", "DNI");
+
             Nodo actual = tope;
             while (actual != null)
             {
@@ -101,9 +240,6 @@ namespace SistAlmacenamientoProfeJheyson
             }
         }
 
-        public bool EstaVacia()
-        {
-            return tope == null;
-        }
+        public bool EstaVacia() => tope == null;
     }
 }

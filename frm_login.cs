@@ -21,74 +21,8 @@ namespace SistAlmacenamientoProfeJheyson
 
         private void frm_loginLoad(object sender, EventArgs e)
         {
-            CrearTablaUsuariosSiNoExiste();
+            BDHelper.Inicializar(); // Se encarga de todo (usuarios + paquetes)
         }
-
-        //  Crea la tabla "usuarios" si no existe
-        private void CrearTablaUsuariosSiNoExiste()
-        {
-            string rutaDB = "usuarios.db";
-
-            try
-            {
-                // Si no existe el archivo, lo crea desde cero
-                if (!File.Exists(rutaDB))
-                {
-                    SQLiteConnection.CreateFile(rutaDB);
-                }
-
-                using (SQLiteConnection conn = new SQLiteConnection("Data Source=" + rutaDB + ";Version=3;"))
-                {
-                    conn.Open();
-
-                    string sql = @"CREATE TABLE IF NOT EXISTS usuarios (
-                                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                usuario TEXT NOT NULL,
-                                contrasena TEXT NOT NULL
-                           );";
-                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
-                    {
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    // Crear usuario admin si no existe
-                    sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = 'admin';";
-                    using (SQLiteCommand cmd = new SQLiteCommand(sql, conn))
-                    {
-                        int count = Convert.ToInt32(cmd.ExecuteScalar());
-                        if (count == 0)
-                        {
-                            sql = "INSERT INTO usuarios (usuario, contrasena) VALUES ('admin', '1234');";
-                            using (SQLiteCommand insertCmd = new SQLiteCommand(sql, conn))
-                            {
-                                insertCmd.ExecuteNonQuery();
-                            }
-                        }
-                    }
-                }
-            }
-            catch (SQLiteException ex)
-            {
-                // 🔧 Si el archivo está corrupto, se elimina y se vuelve a crear
-                if (ex.Message.Contains("file is not a database"))
-                {
-                    MessageBox.Show("⚠️ El archivo 'usuarios.db' estaba dañado. Se regenerará automáticamente.",
-                                    "Reparación de Base de Datos",
-                                    MessageBoxButtons.OK,
-                                    MessageBoxIcon.Warning);
-
-                    File.Delete(rutaDB); // borra el archivo dañado
-                    SQLiteConnection.CreateFile(rutaDB); // crea uno nuevo limpio
-                    CrearTablaUsuariosSiNoExiste(); // vuelve a generar estructura y admin
-                }
-                else
-                {
-                    MessageBox.Show("Error de base de datos:\n" + ex.Message,
-                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
 
         // Botón de inicio de sesión
         private void btn_iniciarsesion_Click(object sender, EventArgs e)
@@ -107,9 +41,7 @@ namespace SistAlmacenamientoProfeJheyson
 
             try
             {
-                string cadenaConexion = "Data Source=usuarios.db;Version=3;";
-
-                using (SQLiteConnection conexion = new SQLiteConnection(cadenaConexion))
+                using (SQLiteConnection conexion = new SQLiteConnection(BDHelper.CadenaConexion))
                 {
                     conexion.Open();
 
@@ -151,15 +83,16 @@ namespace SistAlmacenamientoProfeJheyson
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e) { }
-        private void textBox2_TextChanged(object sender, EventArgs e) { }
-        private void label2_Click(object sender, EventArgs e) { }
-        private void pictureBox2_Click(object sender, EventArgs e) { }
-
         private void btn_registrarUsuario_Click(object sender, EventArgs e)
         {
             frm_registroUsuario registro = new frm_registroUsuario();
             registro.ShowDialog();
         }
+
+        // Otros eventos opcionales
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void textBox2_TextChanged(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void pictureBox2_Click(object sender, EventArgs e) { }
     }
 }

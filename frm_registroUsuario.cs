@@ -45,7 +45,7 @@ namespace SistAlmacenamientoProfeJheyson
 
             try
             {
-                string cadenaConexion = "Data Source=usuarios.db;Version=3;";
+                string cadenaConexion = "BDHelper.CadenaConexion";
 
                 using (SQLiteConnection conexion = new SQLiteConnection(cadenaConexion))
                 {
@@ -90,6 +90,11 @@ namespace SistAlmacenamientoProfeJheyson
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
