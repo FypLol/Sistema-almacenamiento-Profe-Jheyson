@@ -109,7 +109,9 @@ namespace SistAlmacenamientoProfeJheyson
 
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide(); // Oculta esta ventana
+            frm_panelAdmin menu = new frm_panelAdmin();
+            menu.Show(); // Muestra el menú principal
         }
     }
 }

@@ -51,10 +51,17 @@ namespace SistAlmacenamientoProfeJheyson
         // 🔙 Cerrar ventana
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Hide(); // Oculta esta ventana
+            frm_panelAdmin menu = new frm_panelAdmin();
+            menu.Show(); // Muestra el menú principal
         }
 
         private void dgvHistorial_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblMensaje_Click(object sender, EventArgs e)
         {
 
         }

@@ -124,5 +124,15 @@ namespace SistAlmacenamientoProfeJheyson
         {
 
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            // Cierra la ventana actual
+            this.Hide();
+
+            // Vuelve al menú principal
+            frm_panelAdmin menu = new frm_panelAdmin();
+            menu.Show();
+        }
     }
 }

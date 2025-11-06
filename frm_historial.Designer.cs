@@ -39,38 +39,36 @@
             this.dgvHistorial.AllowUserToAddRows = false;
             this.dgvHistorial.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHistorial.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dgvHistorial.Location = new System.Drawing.Point(0, 0);
+            this.dgvHistorial.Location = new System.Drawing.Point(12, 52);
             this.dgvHistorial.Name = "dgvHistorial";
             this.dgvHistorial.ReadOnly = true;
             this.dgvHistorial.RowHeadersWidth = 62;
             this.dgvHistorial.RowTemplate.Height = 28;
-            this.dgvHistorial.Size = new System.Drawing.Size(800, 268);
+            this.dgvHistorial.Size = new System.Drawing.Size(839, 284);
             this.dgvHistorial.TabIndex = 0;
             this.dgvHistorial.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHistorial_CellContentClick);
             // 
             // lblMensaje
             // 
             this.lblMensaje.AutoSize = true;
-            this.lblMensaje.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMensaje.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblMensaje.Location = new System.Drawing.Point(0, 268);
+            this.lblMensaje.Location = new System.Drawing.Point(16, 360);
             this.lblMensaje.Name = "lblMensaje";
             this.lblMensaje.Size = new System.Drawing.Size(369, 26);
             this.lblMensaje.TabIndex = 1;
             this.lblMensaje.Text = "No hay paquetes entregados aún.";
             this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblMensaje.Click += new System.EventHandler(this.lblMensaje_Click);
             // 
             // btnCerrar
             // 
             this.btnCerrar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCerrar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.Location = new System.Drawing.Point(0, 427);
+            this.btnCerrar.Location = new System.Drawing.Point(21, 408);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(800, 23);
+            this.btnCerrar.Size = new System.Drawing.Size(752, 70);
             this.btnCerrar.TabIndex = 2;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
@@ -80,7 +78,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1002, 500);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.dgvHistorial);

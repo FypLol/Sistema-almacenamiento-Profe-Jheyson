@@ -45,7 +45,7 @@
             // 
             // lblUsuario
             // 
-            this.lblUsuario.Location = new System.Drawing.Point(30, 70);
+            this.lblUsuario.Location = new System.Drawing.Point(63, 70);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(100, 23);
             this.lblUsuario.TabIndex = 1;
@@ -53,7 +53,7 @@
             // 
             // lblContrasena
             // 
-            this.lblContrasena.Location = new System.Drawing.Point(30, 110);
+            this.lblContrasena.Location = new System.Drawing.Point(63, 110);
             this.lblContrasena.Name = "lblContrasena";
             this.lblContrasena.Size = new System.Drawing.Size(100, 23);
             this.lblContrasena.TabIndex = 2;
@@ -61,7 +61,7 @@
             // 
             // lblConfirmar
             // 
-            this.lblConfirmar.Location = new System.Drawing.Point(30, 150);
+            this.lblConfirmar.Location = new System.Drawing.Point(63, 147);
             this.lblConfirmar.Name = "lblConfirmar";
             this.lblConfirmar.Size = new System.Drawing.Size(100, 23);
             this.lblConfirmar.TabIndex = 3;
@@ -69,7 +69,7 @@
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(180, 67);
+            this.txtUsuario.Location = new System.Drawing.Point(279, 70);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(150, 26);
             this.txtUsuario.TabIndex = 4;
@@ -77,7 +77,7 @@
             // 
             // txtContrasena
             // 
-            this.txtContrasena.Location = new System.Drawing.Point(180, 107);
+            this.txtContrasena.Location = new System.Drawing.Point(279, 110);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '*';
             this.txtContrasena.Size = new System.Drawing.Size(150, 26);
@@ -85,7 +85,7 @@
             // 
             // txtConfirmar
             // 
-            this.txtConfirmar.Location = new System.Drawing.Point(180, 147);
+            this.txtConfirmar.Location = new System.Drawing.Point(279, 147);
             this.txtConfirmar.Name = "txtConfirmar";
             this.txtConfirmar.PasswordChar = '*';
             this.txtConfirmar.Size = new System.Drawing.Size(150, 26);
@@ -93,25 +93,25 @@
             // 
             // btnRegistrar
             // 
-            this.btnRegistrar.Location = new System.Drawing.Point(60, 200);
+            this.btnRegistrar.Location = new System.Drawing.Point(67, 212);
             this.btnRegistrar.Name = "btnRegistrar";
-            this.btnRegistrar.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistrar.Size = new System.Drawing.Size(124, 48);
             this.btnRegistrar.TabIndex = 7;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(180, 200);
+            this.btnCancelar.Location = new System.Drawing.Point(279, 212);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btnCancelar.Size = new System.Drawing.Size(148, 48);
             this.btnCancelar.TabIndex = 8;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frm_registroUsuario
             // 
-            this.ClientSize = new System.Drawing.Size(525, 321);
+            this.ClientSize = new System.Drawing.Size(756, 410);
             this.Controls.Add(this.lblTitulo);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.lblContrasena);

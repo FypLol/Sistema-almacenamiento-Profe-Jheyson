@@ -43,6 +43,7 @@
             this.tboxDNI = new System.Windows.Forms.TextBox();
             this.lbl_dni = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnVolver = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRegistrarPaquetes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -89,9 +90,9 @@
             this.btnRegistrarP.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnRegistrarP.FlatAppearance.BorderSize = 0;
             this.btnRegistrarP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegistrarP.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegistrarP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrarP.ForeColor = System.Drawing.Color.Black;
-            this.btnRegistrarP.Location = new System.Drawing.Point(525, 296);
+            this.btnRegistrarP.Location = new System.Drawing.Point(142, 282);
             this.btnRegistrarP.Margin = new System.Windows.Forms.Padding(0);
             this.btnRegistrarP.Name = "btnRegistrarP";
             this.btnRegistrarP.Size = new System.Drawing.Size(364, 69);
@@ -204,12 +205,25 @@
             this.pictureBox4.TabIndex = 17;
             this.pictureBox4.TabStop = false;
             // 
+            // btnVolver
+            // 
+            this.btnVolver.BackColor = System.Drawing.Color.LightGray;
+            this.btnVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVolver.Location = new System.Drawing.Point(822, 282);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(320, 69);
+            this.btnVolver.TabIndex = 18;
+            this.btnVolver.Text = "🔙 Volver al menú principal";
+            this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // frm_registrarpaquete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(1379, 640);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.lbl_dni);
             this.Controls.Add(this.tboxDNI);
@@ -255,5 +269,6 @@
         private System.Windows.Forms.Label lbl_dni;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button btnRegistrarP;
+        private System.Windows.Forms.Button btnVolver;
     }
 }
