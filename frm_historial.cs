@@ -5,12 +5,12 @@ namespace SistAlmacenamientoProfeJheyson
 {
     public partial class frm_historial : Form
     {
-        private PilaHistorial pila;
+        private ListaHistorial lista;
 
-        public frm_historial(PilaHistorial pilaHistorial)
+        public frm_historial(ListaHistorial listaHistorial)
         {
             InitializeComponent();
-            pila = pilaHistorial;
+            lista = listaHistorial;
         }
 
         private void frm_historial_Load(object sender, EventArgs e)
@@ -19,7 +19,6 @@ namespace SistAlmacenamientoProfeJheyson
             MostrarHistorial();
         }
 
-        // ⚙️ Configura las columnas del DataGridView
         private void ConfigurarTabla()
         {
             dgvHistorial.Columns.Clear();
@@ -37,34 +36,26 @@ namespace SistAlmacenamientoProfeJheyson
             dgvHistorial.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
-        // 📦 Muestra el contenido actual de la pila
         private void MostrarHistorial()
         {
-            if (pila != null)
+            if (lista != null)
             {
-                pila.MostrarEnGrid(dgvHistorial);
-
+                lista.MostrarEnGrid(dgvHistorial);
                 lblMensaje.Visible = dgvHistorial.Rows.Count == 0;
             }
         }
 
-        // 🔙 Cerrar ventana
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Hide(); // Oculta esta ventana
+            this.Hide();
             frm_panelAdmin menu = new frm_panelAdmin();
-            menu.Show(); // Muestra el menú principal
+            menu.Show();
         }
 
         private void dgvHistorial_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            // No hace nada, solo evita el error del diseñador
         }
 
-        private void lblMensaje_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-

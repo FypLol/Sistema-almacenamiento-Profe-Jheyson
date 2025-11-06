@@ -242,4 +242,60 @@ namespace SistAlmacenamientoProfeJheyson
 
         public bool EstaVacia() => tope == null;
     }
+
+    // 🔹 Clase Lista Enlazada (para historial general)
+    public class ListaHistorial
+    {
+        private Nodo cabeza;
+
+        public void InsertarFinal(string nombre, string telefono, string tamaño, string dni, string fecha)
+        {
+            Nodo nuevo = new Nodo
+            {
+                NombreDestinatario = nombre,
+                Telefono = telefono,
+                Tamaño = tamaño,
+                DNI = dni,
+                FechaIngreso = fecha,
+                Siguiente = null
+            };
+
+            if (cabeza == null)
+            {
+                cabeza = nuevo;
+            }
+            else
+            {
+                Nodo actual = cabeza;
+                while (actual.Siguiente != null)
+                {
+                    actual = actual.Siguiente;
+                }
+                actual.Siguiente = nuevo;
+            }
+        }
+
+        // Mostrar historial en DataGridView
+        public void MostrarEnGrid(DataGridView dgv)
+        {
+            dgv.Rows.Clear();
+            dgv.Columns.Clear();
+
+            dgv.Columns.Add("colNombre", "Nombre");
+            dgv.Columns.Add("colTelefono", "Teléfono");
+            dgv.Columns.Add("colTamaño", "Tamaño");
+            dgv.Columns.Add("colDNI", "DNI");
+            dgv.Columns.Add("colFecha", "Fecha");
+
+            Nodo actual = cabeza;
+            while (actual != null)
+            {
+                dgv.Rows.Add(actual.NombreDestinatario, actual.Telefono, actual.Tamaño, actual.DNI, actual.FechaIngreso);
+                actual = actual.Siguiente;
+            }
+        }
+
+        public bool EstaVacia() => cabeza == null;
+    }
+
 }

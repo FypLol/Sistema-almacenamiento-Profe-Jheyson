@@ -45,7 +45,7 @@ namespace SistAlmacenamientoProfeJheyson
 
             try
             {
-                string cadenaConexion = "BDHelper.CadenaConexion";
+                string cadenaConexion = BDHelper.CadenaConexion;
 
                 using (SQLiteConnection conexion = new SQLiteConnection(cadenaConexion))
                 {
