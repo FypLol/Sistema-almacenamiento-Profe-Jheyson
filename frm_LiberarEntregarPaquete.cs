@@ -7,37 +7,36 @@ namespace SistAlmacenamientoProfeJheyson
     {
         private ColaPaquetes cola;
         private PilaHistorial pila;
+        private ListaHistorial lista;
 
-        // 🔹 Constructor principal (sin parámetros)
-        public frm_LiberarEntregarPaquete()
-        {
-            InitializeComponent();
-        }
-
-        // 🔹 Constructor que recibe las estructuras compartidas
-        public frm_LiberarEntregarPaquete(ColaPaquetes colaCompartida, PilaHistorial pilaCompartida)
+        // 🔹 Constructor principal
+        public frm_LiberarEntregarPaquete(ColaPaquetes colaCompartida, PilaHistorial pilaCompartida, ListaHistorial listaCompartida)
         {
             InitializeComponent();
             cola = colaCompartida;
             pila = pilaCompartida;
+            lista = listaCompartida;
         }
 
-        // 🚀 Carga inicial del formulario
+        // 🚀 Al cargar la ventana
         private void frm_LiberarEntregarPaquete_Load(object sender, EventArgs e)
         {
+            // ⚙️ Reconstruir la cola con los paquetes pendientes desde la BD
+            cola = new ColaPaquetes();
+
             ConfigurarTabla();
             MostrarCola();
         }
 
-        // ⚙️ Configuración del DataGridView
+        // ⚙️ Configurar la tabla
         private void ConfigurarTabla()
         {
             dgvPaquetes.Columns.Clear();
-            dgvPaquetes.Columns.Add("colNombre", "Nombre Destinatario");
+            dgvPaquetes.Columns.Add("colNombre", "Nombre");
             dgvPaquetes.Columns.Add("colTelefono", "Teléfono");
             dgvPaquetes.Columns.Add("colTamaño", "Tamaño");
             dgvPaquetes.Columns.Add("colDNI", "DNI");
-            dgvPaquetes.Columns.Add("colFecha", "Fecha Registro");
+            dgvPaquetes.Columns.Add("colFecha", "Fecha Ingreso");
             dgvPaquetes.Columns.Add("colEstado", "Estado");
 
             dgvPaquetes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -47,7 +46,7 @@ namespace SistAlmacenamientoProfeJheyson
             dgvPaquetes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        // 📦 Mostrar los paquetes pendientes
+        // 🔁 Mostrar cola actual (solo pendientes)
         private void MostrarCola()
         {
             if (cola != null)
@@ -57,7 +56,7 @@ namespace SistAlmacenamientoProfeJheyson
             }
         }
 
-        // 🔍 Buscar por nombre o teléfono
+        // 🔍 Buscar
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             string texto = txtBuscar.Text.Trim();
@@ -96,13 +95,14 @@ namespace SistAlmacenamientoProfeJheyson
             }
         }
 
-        // 🔄 Ver todos los paquetes nuevamente
+        // 🔄 Mostrar todos
         private void BtnVerTodos_Click(object sender, EventArgs e)
         {
             MostrarCola();
         }
 
-        // 🟩 Entregar paquete (desencolar)
+        // 🟩 Entregar paquete
+        // 🟩 Entregar paquete
         private void BtnRegistrar_Click(object sender, EventArgs e)
         {
             if (cola == null || pila == null)
@@ -112,33 +112,34 @@ namespace SistAlmacenamientoProfeJheyson
                 return;
             }
 
-            Nodo paquete = cola.Desencolar();
+            Nodo paquete = cola.Desencolar(); // Elimina el primero de la cola
 
             if (paquete != null)
             {
+                // Guardar en pila y lista (historial)
                 pila.Apilar(paquete);
-                MessageBox.Show($"✅ Paquete de {paquete.NombreDestinatario} ha sido entregado correctamente.",
+                lista.InsertarFinal(paquete.NombreDestinatario, paquete.Telefono, paquete.Tamaño, paquete.DNI, paquete.FechaIngreso);
+
+                MessageBox.Show($"✅ Paquete de {paquete.NombreDestinatario} entregado correctamente.",
                                 "Entrega Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Recargar la tabla
                 MostrarCola();
             }
             else
             {
-                MessageBox.Show("⚠️ No hay paquetes en espera.",
+                MessageBox.Show("⚠️ No hay paquetes pendientes.",
                                 "Cola Vacía", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        //  Volver al menú principal
+
+        // 🔙 Volver al menú
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
             this.Hide();
             frm_panelAdmin menu = new frm_panelAdmin();
             menu.Show();
-        }
-
-        private void dgvPaquetes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
         }
     }
 }

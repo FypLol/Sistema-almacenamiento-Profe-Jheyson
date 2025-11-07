@@ -44,32 +44,12 @@ namespace SistAlmacenamientoProfeJheyson
     }
 
         // 🟨 BOTÓN: Liberar / Entregar Paquete (desencolar de COLA)
+        // 🟨 BOTÓN: Liberar / Entregar Paquete (desencolar de COLA)
         private void button3_Click(object sender, EventArgs e)
         {
-            // Desencola el primer paquete de la cola
-            Nodo entregado = colaPaquetes.Desencolar();
-
-            if (entregado != null)
-            {
-                // Agregar el paquete entregado al historial (LISTA)
-                listaHistorial.Agregar(entregado);
-
-                MessageBox.Show(
-                    $"✅ Paquete de {entregado.NombreDestinatario} entregado correctamente.",
-                    "Entrega Exitosa",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-            }
-            else
-            {
-                MessageBox.Show(
-                    "⚠️ No hay paquetes en espera.",
-                    "Cola Vacía",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-            }
+            // Abre el formulario con la interfaz completa
+            var frm = new frm_LiberarEntregarPaquete(colaPaquetes, pilaHistorial, listaHistorial);
+            frm.ShowDialog();
         }
 
         // 🟪 BOTÓN: Historial de Paquetes (usa LISTA enlazada)
@@ -80,5 +60,9 @@ namespace SistAlmacenamientoProfeJheyson
             frm.ShowDialog();
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

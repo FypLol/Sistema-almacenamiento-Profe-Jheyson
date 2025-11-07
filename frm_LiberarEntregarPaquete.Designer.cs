@@ -43,7 +43,7 @@
             this.dgvPaquetes.RowHeadersWidth = 62;
             this.dgvPaquetes.Size = new System.Drawing.Size(942, 333);
             this.dgvPaquetes.TabIndex = 0;
-            this.dgvPaquetes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaquetes_CellContentClick);
+            
             // 
             // lblMsgVacio
             // 

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace SistAlmacenamientoProfeJheyson
 {
-    // 🔹 Clase Nodo
+    //  Clase Nodo
     public class Nodo
     {
         public string NombreDestinatario { get; set; }
@@ -15,7 +15,7 @@ namespace SistAlmacenamientoProfeJheyson
         public Nodo Siguiente { get; set; }
     }
 
-    // 🔹 Clase Cola de Paquetes (para los pendientes)
+    //  Clase Cola de Paquetes (para los pendientes)
     public class ColaPaquetes
     {
         private Nodo frente;
@@ -91,15 +91,15 @@ namespace SistAlmacenamientoProfeJheyson
             if (frente == null)
                 fin = null;
 
-            // 2️⃣ Actualiza en BD a “Entregado”
             try
             {
                 using (var cn = new SQLiteConnection(BDHelper.CadenaConexion))
                 {
                     cn.Open();
                     string sql = @"UPDATE paquetes 
-                                   SET estado='Entregado' 
-                                   WHERE nombre=@n AND telefono=@t AND fecha_ingreso=@f AND estado='Pendiente';";
+                           SET estado='Entregado' 
+                           WHERE nombre=@n AND telefono=@t AND fecha_ingreso=@f AND estado='Pendiente';";
+
                     using (var cmd = new SQLiteCommand(sql, cn))
                     {
                         cmd.Parameters.AddWithValue("@n", tmp.NombreDestinatario);
@@ -243,12 +243,12 @@ namespace SistAlmacenamientoProfeJheyson
         public bool EstaVacia() => tope == null;
     }
 
-    // 🔹 Clase Lista Enlazada (para historial general)
+    //  Clase Lista Enlazada (para historial general)
     public class ListaHistorial
     {
         private Nodo cabeza;
 
-        // ✅ Método adicional que te faltaba
+        //  Método adicional que te faltaba
         public void Agregar(Nodo paquete)
         {
             if (paquete == null) return;
