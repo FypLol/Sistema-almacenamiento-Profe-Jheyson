@@ -38,11 +38,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPaquetes.ColumnHeadersHeight = 34;
             this.dgvPaquetes.Location = new System.Drawing.Point(15, 93);
-            this.dgvPaquetes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvPaquetes.Margin = new System.Windows.Forms.Padding(4);
             this.dgvPaquetes.Name = "dgvPaquetes";
             this.dgvPaquetes.RowHeadersWidth = 62;
             this.dgvPaquetes.Size = new System.Drawing.Size(942, 333);
             this.dgvPaquetes.TabIndex = 0;
+            this.dgvPaquetes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPaquetes_CellContentClick);
             // 
             // lblMsgVacio
             // 
@@ -59,7 +60,7 @@
             // txtBuscar
             // 
             this.txtBuscar.Location = new System.Drawing.Point(15, 33);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(256, 26);
             this.txtBuscar.TabIndex = 2;
@@ -67,7 +68,7 @@
             // BtnBuscar
             // 
             this.BtnBuscar.Location = new System.Drawing.Point(283, 32);
-            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(96, 33);
             this.BtnBuscar.TabIndex = 3;
@@ -78,7 +79,7 @@
             // BtnVerTodos
             // 
             this.BtnVerTodos.Location = new System.Drawing.Point(392, 32);
-            this.BtnVerTodos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnVerTodos.Margin = new System.Windows.Forms.Padding(4);
             this.BtnVerTodos.Name = "BtnVerTodos";
             this.BtnVerTodos.Size = new System.Drawing.Size(116, 33);
             this.BtnVerTodos.TabIndex = 4;
@@ -90,7 +91,7 @@
             // 
             this.BtnRegistrar.BackColor = System.Drawing.Color.LightGreen;
             this.BtnRegistrar.Location = new System.Drawing.Point(521, 32);
-            this.BtnRegistrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnRegistrar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnRegistrar.Name = "BtnRegistrar";
             this.BtnRegistrar.Size = new System.Drawing.Size(129, 33);
             this.BtnRegistrar.TabIndex = 5;
@@ -102,7 +103,7 @@
             // 
             this.BtnCerrar.BackColor = System.Drawing.Color.LightSteelBlue;
             this.BtnCerrar.Location = new System.Drawing.Point(662, 32);
-            this.BtnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Size = new System.Drawing.Size(96, 33);
             this.BtnCerrar.TabIndex = 6;
@@ -122,7 +123,7 @@
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.lblMsgVacio);
             this.Controls.Add(this.dgvPaquetes);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frm_LiberarEntregarPaquete";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Liberar / Entregar Paquetes";

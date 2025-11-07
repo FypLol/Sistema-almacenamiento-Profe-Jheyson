@@ -5,7 +5,7 @@ namespace SistAlmacenamientoProfeJheyson
 {
     public partial class frm_verPaquetes : Form
     {
-        // 📦 Referencia a la cola actual (recibida desde frm_panelAdmin)
+        // 📦 Cola recibida desde el panel principal
         private ColaPaquetes cola;
 
         public frm_verPaquetes(ColaPaquetes colaPaquetes)
@@ -16,18 +16,21 @@ namespace SistAlmacenamientoProfeJheyson
 
         private void frm_verPaquetes_Load(object sender, EventArgs e)
         {
+            this.Text = "Ver Paquetes Pendientes - Sistema de Almacenamiento";
             ConfigurarDataGridView();
             MostrarPaquetes();
         }
 
-        // 🟦 Configuración visual del DataGridView
+        // 🧱 Configura el DataGridView
         private void ConfigurarDataGridView()
         {
             dgvVerPaquetes.Columns.Clear();
             dgvVerPaquetes.Columns.Add("colNombre", "Nombre Destinatario");
             dgvVerPaquetes.Columns.Add("colTelefono", "Teléfono");
             dgvVerPaquetes.Columns.Add("colTamaño", "Tamaño");
+            dgvVerPaquetes.Columns.Add("colDNI", "DNI");
             dgvVerPaquetes.Columns.Add("colFecha", "Fecha Registro");
+            dgvVerPaquetes.Columns.Add("colEstado", "Estado");
 
             dgvVerPaquetes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvVerPaquetes.AllowUserToAddRows = false;
@@ -38,45 +41,40 @@ namespace SistAlmacenamientoProfeJheyson
             dgvVerPaquetes.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
-        // 🔄 Mostrar los paquetes actuales en la cola
+        // 🔄 Mostrar los paquetes pendientes en la cola
         private void MostrarPaquetes()
         {
-            if (cola != null)
+            try
             {
-                cola.MostrarEnGrid(dgvVerPaquetes);
-
-                if (dgvVerPaquetes.Rows.Count == 0)
+                if (cola != null)
                 {
-                    lblMensaje.Visible = true;
+                    cola.MostrarEnGrid(dgvVerPaquetes);
+                    lblMensaje.Visible = dgvVerPaquetes.Rows.Count == 0;
                 }
-                else
-                {
-                    lblMensaje.Visible = false;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("⚠️ Error al mostrar los paquetes:\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // 🔙 Cerrar ventana
-        private void btnCerrar_Click(object sender, EventArgs e)
+        // 🔁 Botón para refrescar manualmente
+        private void btnActualizar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            MostrarPaquetes();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        // 🔙 Botón Volver al menú principal
+        private void btnVolver_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnCerrar_Click_1(object sender, EventArgs e)
-        {
-            this.Hide(); // Oculta esta ventana
+            this.Hide(); // Oculta la ventana actual
             frm_panelAdmin menu = new frm_panelAdmin();
-            menu.Show(); // Abre el menú principal
+            menu.Show(); // Muestra el menú principal
         }
 
-        private void lblMensaje_Click(object sender, EventArgs e)
-        {
-
-        }
+        // 🔘 Eventos del DataGridView (opcional)
+        private void dgvVerPaquetes_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void lblMensaje_Click(object sender, EventArgs e) { }
     }
 }

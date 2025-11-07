@@ -8,11 +8,13 @@ namespace SistAlmacenamientoProfeJheyson
         private ColaPaquetes cola;
         private PilaHistorial pila;
 
+        // 🔹 Constructor principal (sin parámetros)
         public frm_LiberarEntregarPaquete()
         {
             InitializeComponent();
         }
 
+        // 🔹 Constructor que recibe las estructuras compartidas
         public frm_LiberarEntregarPaquete(ColaPaquetes colaCompartida, PilaHistorial pilaCompartida)
         {
             InitializeComponent();
@@ -20,19 +22,23 @@ namespace SistAlmacenamientoProfeJheyson
             pila = pilaCompartida;
         }
 
+        // 🚀 Carga inicial del formulario
         private void frm_LiberarEntregarPaquete_Load(object sender, EventArgs e)
         {
             ConfigurarTabla();
             MostrarCola();
         }
 
+        // ⚙️ Configuración del DataGridView
         private void ConfigurarTabla()
         {
             dgvPaquetes.Columns.Clear();
             dgvPaquetes.Columns.Add("colNombre", "Nombre Destinatario");
             dgvPaquetes.Columns.Add("colTelefono", "Teléfono");
             dgvPaquetes.Columns.Add("colTamaño", "Tamaño");
+            dgvPaquetes.Columns.Add("colDNI", "DNI");
             dgvPaquetes.Columns.Add("colFecha", "Fecha Registro");
+            dgvPaquetes.Columns.Add("colEstado", "Estado");
 
             dgvPaquetes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvPaquetes.AllowUserToAddRows = false;
@@ -41,6 +47,7 @@ namespace SistAlmacenamientoProfeJheyson
             dgvPaquetes.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
+        // 📦 Mostrar los paquetes pendientes
         private void MostrarCola()
         {
             if (cola != null)
@@ -50,6 +57,7 @@ namespace SistAlmacenamientoProfeJheyson
             }
         }
 
+        // 🔍 Buscar por nombre o teléfono
         private void BtnBuscar_Click(object sender, EventArgs e)
         {
             string texto = txtBuscar.Text.Trim();
@@ -60,6 +68,9 @@ namespace SistAlmacenamientoProfeJheyson
                                 "Búsqueda", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
+
+            dgvPaquetes.ClearSelection();
+            bool encontrado = false;
 
             foreach (DataGridViewRow fila in dgvPaquetes.Rows)
             {
@@ -73,15 +84,25 @@ namespace SistAlmacenamientoProfeJheyson
                         break;
                     }
                 }
+
                 fila.Visible = coincide;
+                if (coincide) encontrado = true;
+            }
+
+            if (!encontrado)
+            {
+                MessageBox.Show("No se encontró ningún paquete con esos datos.",
+                                "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
+        // 🔄 Ver todos los paquetes nuevamente
         private void BtnVerTodos_Click(object sender, EventArgs e)
         {
             MostrarCola();
         }
 
+        // 🟩 Entregar paquete (desencolar)
         private void BtnRegistrar_Click(object sender, EventArgs e)
         {
             if (cola == null || pila == null)
@@ -107,11 +128,17 @@ namespace SistAlmacenamientoProfeJheyson
             }
         }
 
+        //  Volver al menú principal
         private void BtnCerrar_Click(object sender, EventArgs e)
         {
-            this.Hide(); // Oculta esta ventana
+            this.Hide();
             frm_panelAdmin menu = new frm_panelAdmin();
-            menu.Show(); // Muestra el menú principal
+            menu.Show();
+        }
+
+        private void dgvPaquetes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
     }
 }

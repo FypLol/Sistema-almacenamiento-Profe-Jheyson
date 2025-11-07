@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace SistAlmacenamientoProfeJheyson
 {
     public partial class frm_registrarpaquete : Form
     {
-        // 🔹 Cola y Pila globales
-        ColaPaquetes colaPaquetes = new ColaPaquetes();
-        PilaHistorial pilaHistorial = new PilaHistorial();
+        // 🔹 Ahora usamos la PILA para registrar paquetes
+        private PilaHistorial pilaPaquetes = new PilaHistorial();
 
         public frm_registrarpaquete()
         {
@@ -29,8 +29,9 @@ namespace SistAlmacenamientoProfeJheyson
 
             // Cargar tamaños disponibles
             cmbTamaño.Items.AddRange(new string[] { "Pequeño", "Mediano", "Grande" });
+            cmbTamaño.SelectedIndex = 0;
 
-            // Actualizar tabla con datos desde la base
+            // Actualizar tabla
             actualizarTabla();
         }
 
@@ -43,14 +44,13 @@ namespace SistAlmacenamientoProfeJheyson
             dgvRegistrarPaquetes.Columns.Add("colTamaño", "Tamaño");
             dgvRegistrarPaquetes.Columns.Add("colDNI", "DNI");
             dgvRegistrarPaquetes.Columns.Add("colFecha", "Fecha Registro");
-            dgvRegistrarPaquetes.Columns.Add("colEstado", "Estado");
 
             dgvRegistrarPaquetes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRegistrarPaquetes.AllowUserToAddRows = false;
             dgvRegistrarPaquetes.ReadOnly = true;
         }
 
-        // 📦 Registrar (encolar) paquete
+        // 📦 Registrar (apilar) paquete
         private void btnRegistrarP_Click(object sender, EventArgs e)
         {
             string nombre = tboxNombre.Text.Trim();
@@ -66,73 +66,81 @@ namespace SistAlmacenamientoProfeJheyson
                 return;
             }
 
-            // Encolar y guardar en BD
-            colaPaquetes.Encolar(nombre, telefono, tamaño, dni, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
-
-            MessageBox.Show("📦 Paquete registrado correctamente y guardado en la base de datos.",
-                            "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            LimpiarCamposRegistro();
-            actualizarTabla();
-        }
-
-        // 🧾 Liberar (entregar) el primer paquete de la cola
-        private void btn_Liberar_Click(object sender, EventArgs e)
-        {
-            Nodo paquete = colaPaquetes.Desencolar();
-
-            if (paquete != null)
+            // Crear el nuevo paquete como nodo
+            Nodo nuevoPaquete = new Nodo
             {
-                pilaHistorial.Apilar(paquete);
-                MessageBox.Show($"✅ Paquete de {paquete.NombreDestinatario} (DNI: {paquete.DNI}) ha sido entregado.",
-                                "Entrega Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                NombreDestinatario = nombre,
+                Telefono = telefono,
+                Tamaño = tamaño,
+                DNI = dni,
+                FechaIngreso = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+            };
 
+            // 1️⃣ Apilar paquete en memoria
+            pilaPaquetes.Apilar(nuevoPaquete);
+
+            // 2️⃣ Guardar también en la base de datos
+            try
+            {
+                using (var cn = new System.Data.SQLite.SQLiteConnection(BDHelper.CadenaConexion))
+                {
+                    cn.Open();
+                    string sql = @"INSERT INTO paquetes (nombre, telefono, tamano, fecha_ingreso, estado)
+                                   VALUES (@n, @t, @tam, @f, 'Pendiente');";
+                    using (var cmd = new System.Data.SQLite.SQLiteCommand(sql, cn))
+                    {
+                        cmd.Parameters.AddWithValue("@n", nombre);
+                        cmd.Parameters.AddWithValue("@t", telefono);
+                        cmd.Parameters.AddWithValue("@tam", tamaño + " - DNI:" + dni);
+                        cmd.Parameters.AddWithValue("@f", nuevoPaquete.FechaIngreso);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                MessageBox.Show("📦 Paquete registrado correctamente y guardado en la base de datos.",
+                                "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LimpiarCamposRegistro();
                 actualizarTabla();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("⚠️ No hay paquetes pendientes.",
-                                "Cola vacía", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("❌ Error al registrar el paquete:\n" + ex.Message,
+                                "Error de BD", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // 🧹 Limpiar campos del formulario
+        // 🧾 Mostrar los paquetes registrados en la Pila
+        private void actualizarTabla()
+        {
+            if (dgvRegistrarPaquetes != null)
+            {
+                pilaPaquetes.MostrarEnGrid(dgvRegistrarPaquetes);
+            }
+        }
+
+        // 🧹 Limpiar campos
         private void LimpiarCamposRegistro()
         {
             tboxNombre.Clear();
             tboxTelefono.Clear();
             tboxDNI.Clear();
-            cmbTamaño.SelectedIndex = -1;
+            cmbTamaño.SelectedIndex = 0;
         }
 
-        // 🔄 Actualizar tabla con datos de la base
-        private void actualizarTabla()
+        // 🔙 Botón Volver al menú
+        private void btnVolver_Click(object sender, EventArgs e)
         {
-            if (dgvRegistrarPaquetes != null)
-            {
-                colaPaquetes.MostrarEnGrid(dgvRegistrarPaquetes);
-            }
+            this.Hide();
+            frm_panelAdmin menu = new frm_panelAdmin();
+            menu.Show();
         }
 
-        // Eventos del DataGridView (opcionales)
+        // Eventos del DataGridView (opcional)
         private void dgvRegistrarPaquetes_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) { }
         private void dgvRegistrarPaquetes_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void dgvRegistrarPaquetes_CellClick(object sender, DataGridViewCellEventArgs e) { }
         private void tboxNombre_TextChanged(object sender, EventArgs e) { }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            // Cierra la ventana actual
-            this.Hide();
-
-            // Vuelve al menú principal
-            frm_panelAdmin menu = new frm_panelAdmin();
-            menu.Show();
-        }
+        private void textBox2_TextChanged(object sender, EventArgs e) { }
     }
 }

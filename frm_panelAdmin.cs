@@ -1,5 +1,4 @@
-﻿using SistAlmacenamientoProfeJheyson;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 
 namespace SistAlmacenamientoProfeJheyson
@@ -45,18 +43,42 @@ namespace SistAlmacenamientoProfeJheyson
         frm.ShowDialog();
     }
 
-    // 🟨 BOTÓN: Liberar / Entregar Paquete (desencolar de COLA)
-    private void button3_Click(object sender, EventArgs e)
-    {
-        var frm = new frm_LiberarEntregarPaquete(colaPaquetes, pilaHistorial);
-        frm.ShowDialog();
-    }
+        // 🟨 BOTÓN: Liberar / Entregar Paquete (desencolar de COLA)
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // Desencola el primer paquete de la cola
+            Nodo entregado = colaPaquetes.Desencolar();
 
-    // 🟪 BOTÓN: Historial de Paquetes (usa LISTA enlazada)
-    private void button1_Click(object sender, EventArgs e)
-    {
-        var frm = new frm_historial(listaHistorial);
-        frm.ShowDialog();
+            if (entregado != null)
+            {
+                // Agregar el paquete entregado al historial (LISTA)
+                listaHistorial.Agregar(entregado);
+
+                MessageBox.Show(
+                    $"✅ Paquete de {entregado.NombreDestinatario} entregado correctamente.",
+                    "Entrega Exitosa",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                MessageBox.Show(
+                    "⚠️ No hay paquetes en espera.",
+                    "Cola Vacía",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
+        }
+
+        // 🟪 BOTÓN: Historial de Paquetes (usa LISTA enlazada)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // Muestra los paquetes entregados (LISTA)
+            var frm = new frm_historial(listaHistorial);
+            frm.ShowDialog();
+        }
+
     }
-}
 }

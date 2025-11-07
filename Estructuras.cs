@@ -248,6 +248,27 @@ namespace SistAlmacenamientoProfeJheyson
     {
         private Nodo cabeza;
 
+        // ✅ Método adicional que te faltaba
+        public void Agregar(Nodo paquete)
+        {
+            if (paquete == null) return;
+            paquete.Siguiente = null; // asegura que no arrastre referencias anteriores
+
+            if (cabeza == null)
+            {
+                cabeza = paquete;
+            }
+            else
+            {
+                Nodo actual = cabeza;
+                while (actual.Siguiente != null)
+                {
+                    actual = actual.Siguiente;
+                }
+                actual.Siguiente = paquete;
+            }
+        }
+
         public void InsertarFinal(string nombre, string telefono, string tamaño, string dni, string fecha)
         {
             Nodo nuevo = new Nodo
@@ -297,5 +318,5 @@ namespace SistAlmacenamientoProfeJheyson
 
         public bool EstaVacia() => cabeza == null;
     }
-
 }
+

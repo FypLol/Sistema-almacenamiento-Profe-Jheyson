@@ -2,15 +2,12 @@
 {
     partial class frm_verPaquetes
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.DataGridView dgvVerPaquetes;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.Label lblMensaje;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,79 +17,79 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.dgvVerPaquetes = new System.Windows.Forms.DataGridView();
-            this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.lblMensaje = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVerPaquetes)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvVerPaquetes
             // 
-            this.dgvVerPaquetes.AllowUserToAddRows = false;
-            this.dgvVerPaquetes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvVerPaquetes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvVerPaquetes.Location = new System.Drawing.Point(50, 22);
+            this.dgvVerPaquetes.ColumnHeadersHeight = 34;
+            this.dgvVerPaquetes.Location = new System.Drawing.Point(20, 20);
             this.dgvVerPaquetes.Name = "dgvVerPaquetes";
-            this.dgvVerPaquetes.ReadOnly = true;
             this.dgvVerPaquetes.RowHeadersWidth = 62;
-            this.dgvVerPaquetes.RowTemplate.Height = 28;
-            this.dgvVerPaquetes.Size = new System.Drawing.Size(800, 351);
+            this.dgvVerPaquetes.Size = new System.Drawing.Size(760, 350);
             this.dgvVerPaquetes.TabIndex = 0;
-            this.dgvVerPaquetes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // btnCerrar
+            // btnVolver
             // 
-            this.btnCerrar.AllowDrop = true;
-            this.btnCerrar.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCerrar.Location = new System.Drawing.Point(83, 440);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(742, 47);
-            this.btnCerrar.TabIndex = 1;
-            this.btnCerrar.Text = "Cerrar";
-            this.btnCerrar.UseVisualStyleBackColor = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click_1);
+            this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(152)))), ((int)(((byte)(219)))));
+            this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnVolver.ForeColor = System.Drawing.Color.White;
+            this.btnVolver.Location = new System.Drawing.Point(400, 390);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(150, 40);
+            this.btnVolver.TabIndex = 2;
+            this.btnVolver.Text = "Volver al menú";
+            this.btnVolver.UseVisualStyleBackColor = false;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
+            // btnActualizar
+            // 
+            this.btnActualizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(204)))), ((int)(((byte)(113)))));
+            this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Location = new System.Drawing.Point(200, 390);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(150, 40);
+            this.btnActualizar.TabIndex = 1;
+            this.btnActualizar.Text = "Actualizar";
+            this.btnActualizar.UseVisualStyleBackColor = false;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // lblMensaje
             // 
-            this.lblMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMensaje.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblMensaje.Location = new System.Drawing.Point(191, 389);
+            this.lblMensaje.AutoSize = true;
+            this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic);
+            this.lblMensaje.ForeColor = System.Drawing.Color.Gray;
+            this.lblMensaje.Location = new System.Drawing.Point(258, 160);
             this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(506, 48);
-            this.lblMensaje.TabIndex = 2;
-            this.lblMensaje.Text = "No hay paquetes registrados actualmente.";
-            this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblMensaje.Size = new System.Drawing.Size(292, 28);
+            this.lblMensaje.TabIndex = 3;
+            this.lblMensaje.Text = "No hay paquetes pendientes 📭";
             this.lblMensaje.Visible = false;
-            this.lblMensaje.Click += new System.EventHandler(this.lblMensaje_Click);
             // 
             // frm_verPaquetes
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(979, 522);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblMensaje);
-            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnVolver);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.dgvVerPaquetes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "frm_verPaquetes";
-            this.Text = "frm_verPaquetes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frm_verPaquetes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvVerPaquetes)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
-
-        #endregion
-
-        private System.Windows.Forms.DataGridView dgvVerPaquetes;
-        private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.Label lblMensaje;
     }
 }
