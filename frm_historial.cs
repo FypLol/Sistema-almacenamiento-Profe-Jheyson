@@ -47,14 +47,22 @@ namespace SistAlmacenamientoProfeJheyson
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frm_panelAdmin menu = new frm_panelAdmin();
-            menu.Show();
+            
+            Form menu = Application.OpenForms["frm_panelAdmin"];
+
+            if (menu != null)
+            {
+                
+                menu.Show();
+            }
+
+            
+            this.Close();
         }
 
         private void dgvHistorial_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // No hace nada, solo evita el error del diseñador
+            // No hace nada... solo evita el error del diseñador
         }
 
     }

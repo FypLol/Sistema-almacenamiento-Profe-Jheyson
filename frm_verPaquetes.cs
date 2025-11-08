@@ -68,9 +68,17 @@ namespace SistAlmacenamientoProfeJheyson
         // 🔙 Botón Volver al menú principal
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            this.Hide(); // Oculta la ventana actual
-            frm_panelAdmin menu = new frm_panelAdmin();
-            menu.Show(); // Muestra el menú principal
+            // Buscar si el formulario principal ya está abierto
+            Form menu = Application.OpenForms["frm_panelAdmin"];
+
+            if (menu != null)
+            {
+                // Mostrar el menú existente (no crear uno nuevo)
+                menu.Show();
+            }
+
+            // Cierra esta ventana actual
+            this.Close();
         }
 
         // 🔘 Eventos del DataGridView (opcional)

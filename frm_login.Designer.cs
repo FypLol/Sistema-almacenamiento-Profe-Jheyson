@@ -47,7 +47,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(644, 76);
+            this.pictureBox1.Location = new System.Drawing.Point(550, 65);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(603, 504);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -146,13 +146,16 @@
             // 
             // btn_registrarUsuario
             // 
-            this.btn_registrarUsuario.Location = new System.Drawing.Point(249, 406);
+            this.btn_registrarUsuario.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btn_registrarUsuario.Cursor = System.Windows.Forms.Cursors.No;
+            this.btn_registrarUsuario.Location = new System.Drawing.Point(229, 389);
+            this.btn_registrarUsuario.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_registrarUsuario.Name = "btn_registrarUsuario";
-            this.btn_registrarUsuario.Size = new System.Drawing.Size(150, 30);
+            this.btn_registrarUsuario.Size = new System.Drawing.Size(155, 71);
             this.btn_registrarUsuario.TabIndex = 31;
             this.btn_registrarUsuario.Text = "Registrar Usuario";
             this.btn_registrarUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_registrarUsuario.UseVisualStyleBackColor = true;
+            this.btn_registrarUsuario.UseVisualStyleBackColor = false;
             this.btn_registrarUsuario.Click += new System.EventHandler(this.btn_registrarUsuario_Click);
             // 
             // frm_login
